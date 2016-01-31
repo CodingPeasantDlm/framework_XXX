@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dlm.dao.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="dlm.model.SysUser" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="GENDER" property="gender" jdbcType="CHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="VERIFY" property="verify" jdbcType="VARCHAR" />
+    <result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+    <result column="FIRST_NAME" property="firstName" jdbcType="VARCHAR" />
+    <result column="LAST_NAME" property="lastName" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="BIRTH_DATE" property="birthDate" jdbcType="TIMESTAMP" />
+    <result column="INSERT_DATE" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, GENDER, USERNAME, PASSWORD, VERIFY, NICKNAME, FIRST_NAME, LAST_NAME, EMAIL, PHONE, 
+    STATUS, BIRTH_DATE, INSERT_DATE, UPDATE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_user
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="dlm.model.SysUser" >
+    insert into sys_user (ID, GENDER, USERNAME, 
+      PASSWORD, VERIFY, NICKNAME, 
+      FIRST_NAME, LAST_NAME, EMAIL, 
+      PHONE, STATUS, BIRTH_DATE, 
+      INSERT_DATE, UPDATE_DATE)
+    values (#{id,jdbcType=INTEGER}, #{gender,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{verify,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{birthDate,jdbcType=TIMESTAMP}, 
+      #{insertDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="dlm.model.SysUser" >
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="verify != null" >
+        VERIFY,
+      </if>
+      <if test="nickname != null" >
+        NICKNAME,
+      </if>
+      <if test="firstName != null" >
+        FIRST_NAME,
+      </if>
+      <if test="lastName != null" >
+        LAST_NAME,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="birthDate != null" >
+        BIRTH_DATE,
+      </if>
+      <if test="insertDate != null" >
+        INSERT_DATE,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="verify != null" >
+        #{verify,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dlm.model.SysUser" >
+    update sys_user
+    <set >
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="verify != null" >
+        VERIFY = #{verify,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        NICKNAME = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="birthDate != null" >
+        BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertDate != null" >
+        INSERT_DATE = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dlm.model.SysUser" >
+    update sys_user
+    set GENDER = #{gender,jdbcType=CHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      VERIFY = #{verify,jdbcType=VARCHAR},
+      NICKNAME = #{nickname,jdbcType=VARCHAR},
+      FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=CHAR},
+      BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+      INSERT_DATE = #{insertDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 方式一:效率差 -->
+	<select id="selectUserRole" parameterType="java.lang.Integer" resultType="dlm.model.SysRole">
+		SELECT
+		 ID, SN, NAME, REMARK, STATUS, INSERT_DATE, UPDATE_DATE, ORGID
+		FROM
+		sys_role 
+		left join sys_user_role on sys_user_role.role_id=sys_role.id
+		where sys_user_role.USER_ID=#{id,jdbcType=VARCHAR}
+	</select>
+	<resultMap type="dlm.model.SysUser" id="userResultMap" extends="BaseResultMap">
+		<collection property="sysRoles" column="ID" javaType="list" select="selectUserRole" />
+	</resultMap>
+	<select id="getAll" resultMap="userResultMap">
+		select ID,  NICKNAME  from sys_user
+	</select>
+	
+  
+  <!-- 方式二:效率优 -->
+	<resultMap type="dlm.model.SysUser" id="userResultMap2" extends="BaseResultMap">
+		<collection property="sysRoles" javaType="list" ofType="dlm.model.SysRole">
+			<result property="id" column="ROLE_ID"/>
+			<result property="sn" column="ROLE_SN" />
+			<result property="name" column="ROLE_NAME"/>
+			<result property="remark" column="ROLE_REMARK" />
+			<result property="status" column="ROLE_STATUS"/>
+			<result property="insertDate" column="ROLE_INSERT_DATE" />
+			<result property="updateDate" column="ROLE_UPDATE_DATE" />
+			<result property="orgId" column="ROLE_ORGID" />
+		</collection>
+	</resultMap>
+	<select id="getAll2" resultMap="userResultMap2">
+	SELECT
+		sys_user.ID, sys_user.GENDER, sys_user.USERNAME, sys_user.PASSWORD, sys_user.VERIFY, 
+		sys_user.NICKNAME, sys_user.FIRST_NAME, sys_user.LAST_NAME,sys_user. EMAIL, sys_user.PHONE, 
+  		sys_user.STATUS,sys_user.BIRTH_DATE,sys_user.INSERT_DATE,sys_user.UPDATE_DATE,
+		sys_role.ID as ROLE_ID, sys_role.SN as ROLE_SN, sys_role.NAME as ROLE_NAME,
+		sys_role.REMARK as ROLE_REMARK, sys_role.STATUS as ROLE_STATUS, sys_role.INSERT_DATE as ROLE_INSERT_DATE,
+		 sys_role.UPDATE_DATE as ROLE_UPDATE_DATE, sys_role.ORGID as ROLE_ORGID
+		FROM
+		sys_user
+		JOIN sys_user_role ON sys_User.ID = sys_user_role.USER_ID
+		JOIN sys_role ON sys_user_role.ROLE_ID = sys_role.ID
+	</select>
+</mapper>
